@@ -2,7 +2,7 @@ import cloudinary from "../config/cloudinary.js";
 import { User } from "../models/user.js";
 import dotenv from "dotenv";
 dotenv.config();
-console.log("Cloudinary config:", cloudinary.config());
+
 
 export const updateProfileImage = async (req, res) => {
   try {
@@ -43,7 +43,7 @@ export const updateProfileImage = async (req, res) => {
     req.user.profileImage = result.secure_url;
 
     await user.save();
-    console.log("Profile image updated successfully:", user);
+    
 
     return res.status(200).json({
       success: true,
