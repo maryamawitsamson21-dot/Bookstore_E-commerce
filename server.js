@@ -13,7 +13,8 @@ import {router as forDelete} from "./routes/forDelete.js";
 import {router as forPost} from "./routes/forPost.js";
 import {connection} from "./database/mongoose.js";
 import {auth} from './middlewares/auth.js'
-import { updateProfileImage } from "./controllers/profile.js";
+
+
 
 
 
@@ -27,7 +28,6 @@ app.use("/api",getSpecific)
 app.use("/api",forUpdate)
 app.use("/api",forDelete)
 app.use("/api/auth",registration)
-app.post("/api/upload",auth,upload.single("image"),updateProfileImage)
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
     connection()

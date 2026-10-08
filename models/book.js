@@ -34,10 +34,12 @@ export const bookSchema = new mongoose.Schema({
     },
     isbn: {
         type: String,
-        unique: true
+        unique: true,
+        required: true
     },
     image: {
         type:String,
+        default:null
     },
     stock: {
         type:Number,
