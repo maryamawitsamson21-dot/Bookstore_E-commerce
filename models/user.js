@@ -16,12 +16,14 @@ const userSchema=new mongoose.Schema({
     password:{
         type:String,
         required:true,
-    select:false
+    select:false,
+    minlength:6
     },
      role:{
             type:String,
             enum:["user","admin"],
-            default:"user"
+            default:"user",
+            required:true
         },
        profileImage:{
             type:String,
@@ -33,6 +35,11 @@ const userSchema=new mongoose.Schema({
         },
         address:{
             type:String,
+            required:true
+        },
+        isActive:{
+            type:Boolean,
+            default:true,
             required:true
         }
 

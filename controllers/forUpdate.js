@@ -1,7 +1,7 @@
 import {Book} from '../models/book.js'
 import cloudinary from "../config/cloudinary.js";
 export const forUpdate=async (req,res)=>{
-    try{
+   
         const {id}=req.params
         const {isbn}=req.body
         const file=req.file
@@ -44,13 +44,5 @@ if(!file){
         }
         return res.status(200).json({success:true, data:book});
 
-    } catch(error){
-        return res.status(500).json({
-            success:false,
-            message:"An error occurred while uploading the book image",
-            error:error.message
-
-        })
-    }
 
 }

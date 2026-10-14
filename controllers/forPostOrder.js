@@ -1,7 +1,7 @@
 import {cart} from '../models/cart.js'
 import {order} from '../models/order.js'
 export const forPostOrder=async(req,res)=>{
-    try{
+   
         const {id}=req.body //the id of the book that is send from frontend
     const user=req.user.id
     const match=await cart.findOne({user}).populate("items.book")
@@ -34,11 +34,5 @@ export const forPostOrder=async(req,res)=>{
            message:"The Book successfully added to the order",data:match
         })
 
-    }catch(error){
-        console.log(`There is an error in the controller ${error}`)
-        return res.status(500).json({
-            success:false,
-            message:error.message||'server error'
-        })
-    }
+   
 }

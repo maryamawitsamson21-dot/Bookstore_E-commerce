@@ -1,7 +1,7 @@
 import { cart } from "../models/cart.js"
 
 export const forPostCart=async(req,res)=>{
-   try{
+   
      const {book,quantity}=req.body// book is the _id of the book model not the isbn
      const user=req.user.id
      const match=await cart.findOne({user})
@@ -27,10 +27,6 @@ export const forPostCart=async(req,res)=>{
         await match.save(); 
         return res.status(200).json({ success: true, message: "The book successfully added", data: match });
    
-   }catch(error)
-   { console.log(`There is an error in forPostCart controller ${error}`)
-          return res.status(500).json({ success: false, message:error.message|| "Internal server error" });
-
-   }
+  
 
 }

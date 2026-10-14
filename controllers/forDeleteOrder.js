@@ -1,6 +1,6 @@
 import {order} from '../models/order.js'
 export const forDeleteOrder=async(req,res)=>{
-    try{
+   
         const {id}=req.params
     const {bookId}=req.body
      if (!bookId) {
@@ -38,11 +38,7 @@ export const forDeleteOrder=async(req,res)=>{
             message: "The item has been cancelled successfully"
         })
 
-    }catch(error){
-        console.log(`There is an error in delete order controller ${error}`)
-        return res.status(500).json({success:false, message:"Internal server error"});
-    }
-
+  
 
   
 }

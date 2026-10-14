@@ -2,7 +2,7 @@ import {User} from '../models/user.js'
 import bcrypt from 'bcrypt'
 
 export const updatePassword=async(req,res)=>{
-    try{
+  
         const {oldPassword,newPassword}=req.body
         if(!oldPassword||!newPassword||oldPassword.trim()===""||newPassword.trim()===""||oldPassword===undefined||newPassword===undefined){
             return res.json({
@@ -26,6 +26,12 @@ if(!isMatched){
         message:"The password is incorrect"
     })
 }
+if(newPassword.length<6){
+    return res.json({
+        success:false,
+        message:"Password must be at least 6 characters"
+    })
+}
 const salt = await bcrypt.genSalt(10)
         findUser.password = await bcrypt.hash(newPassword, salt)
 await findUser.save()
@@ -34,8 +40,5 @@ return res.json({
     message:"Password successfully changed"
 })
 
-    }catch(error){
-        console.log(`There is an error in updatePassword controller: ${error}`);
-        return res.status(500).json({success:false, message:"Internal server error"});
-    }
+   
 }

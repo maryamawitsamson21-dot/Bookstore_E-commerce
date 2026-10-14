@@ -13,12 +13,13 @@ import {router as forDelete} from "./routes/forDelete.js";
 import {router as forPost} from "./routes/forPost.js";
 import {connection} from "./database/mongoose.js";
 import {auth} from './middlewares/auth.js'
-
-
+import { errorHandler } from "./middlewares/errorHandler.js";
+import helmet from "helmet";
 
 
 
 const app = express();
+app.use(helmet());
 app.use(express.json());
 
 app.use(cors());
@@ -28,6 +29,7 @@ app.use("/api",getSpecific)
 app.use("/api",forUpdate)
 app.use("/api",forDelete)
 app.use("/api/auth",registration)
+app.use(errorHandler)
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
     connection()

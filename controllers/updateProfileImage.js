@@ -4,7 +4,7 @@ import { User } from "../models/user.js";
 
 
 export const updateProfileImage = async (req, res) => {
-  try {
+ 
     const {firstName,lastName,phoneNumber,address}=req.body
     
  
@@ -49,10 +49,5 @@ const user = await User.findByIdAndUpdate({ _id: req.params.id }, {firstName: re
 
    
 
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: error.message
-    });
-  }
+ 
 };

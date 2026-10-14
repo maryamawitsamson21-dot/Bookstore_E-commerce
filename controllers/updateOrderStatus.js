@@ -1,7 +1,7 @@
 import { order } from "../models/order.js"
 
 export const updateOrderStatus=async(req,res)=>{
-    try{
+
         const {id}=req.params
     const {status,bookId}=req.body
     const allowed=[
@@ -25,11 +25,7 @@ export const updateOrderStatus=async(req,res)=>{
        await match.save()
         return res.status(200).json({success:true, data:match,message:"Order status updated successfully"});
 
-    }catch(error){
-        console.log(`There is an error in updateCart controller: ${error}`);
-        return res.status(500).json({success:false, message:"Internal server error"});
-    }
-
+  
 
 
 
